@@ -37,13 +37,20 @@ const Form = (props) => {
         // console.log(enteredInterest)
         // console.log(enteredDuration)
 
+
+
+        props.submit(userInput);
+    }
+
+    const resetHandler = () => {
+
         setEnteredCurrentSavings('');
         setEnteredYearlySavings('');
         setEnteredInterest('');
         setEnteredDuration('');
 
 
-        props.submit(userInput);
+        props.cancel();
     }
 
     return (
@@ -71,7 +78,7 @@ const Form = (props) => {
                 </p>
             </div>
             <p className="actions">
-                <button type="reset" className="buttonAlt">
+                <button type="reset" className="buttonAlt" onClick={resetHandler}>
                     Reset
                 </button>
                 <button type="submit" className="button">

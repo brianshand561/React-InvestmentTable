@@ -15,13 +15,15 @@ const Table = (props) => {
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>YEAR NUMBER</td>
-                    <td>TOTAL SAVINGS END OF YEAR</td>
-                    <td>INTEREST GAINED IN YEAR</td>
-                    <td>TOTAL INTEREST GAINED</td>
-                    <td>TOTAL INVESTED CAPITAL</td>
-                </tr>
+                {props.data.map((item) => (
+                    <tr key={item.key}>
+                        <td>{item.year}</td>
+                        <td>{item.savingsEndOfYear}</td>
+                        <td>{item.yearlyInterest}</td>
+                        <td>{item.totalInterestGained}</td>
+                        <td>{item.investedCapital}</td>
+                    </tr>
+                ))}
             </tbody>
         </table>
     )

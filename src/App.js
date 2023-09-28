@@ -23,10 +23,11 @@ function App() {
       totalYearlyInterest += yearlyInterest;
       totalYearlySavings += yearlyContribution;
       data.push({
+        key: Math.random().toString(),
         year: i + 1, //col 1
         yearlyInterest: yearlyInterest,  //col 3
         savingsEndOfYear: currentSavings, //col 2
-        investedCapital: yearlyContribution + currentSavings,
+        investedCapital: yearlyContribution + currentSavings, //col 5
         totalInterestGained: totalYearlyInterest //col 4
       });
     }
@@ -37,6 +38,10 @@ function App() {
 
   };
 
+  const cancelHandler = () => {
+    setYearlyData([]);
+  }
+
   return (
     <div>
       <header className="header">
@@ -44,7 +49,7 @@ function App() {
         <h1>Investment Calculator</h1>
       </header>
 
-      <Form submit={calculateHandler} />
+      <Form submit={calculateHandler} cancel={cancelHandler} />
 
       {yearlyData.length > 0 ? (
         <Table data={yearlyData} />
